@@ -14,6 +14,51 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+PokemonTypes _$PokemonTypesFromJson(Map<String, dynamic> json) {
+  switch (json['runtimeType']) {
+    case 'normal':
+      return _Normal.fromJson(json);
+    case 'fire':
+      return _Fire.fromJson(json);
+    case 'water':
+      return _Water.fromJson(json);
+    case 'grass':
+      return _Grass.fromJson(json);
+    case 'electric':
+      return _Electric.fromJson(json);
+    case 'ice':
+      return _Ice.fromJson(json);
+    case 'fighting':
+      return _Fighting.fromJson(json);
+    case 'poison':
+      return _Poison.fromJson(json);
+    case 'ground':
+      return _Ground.fromJson(json);
+    case 'flying':
+      return _Flying.fromJson(json);
+    case 'psychic':
+      return _Psychic.fromJson(json);
+    case 'bug':
+      return _Bug.fromJson(json);
+    case 'rock':
+      return _Rock.fromJson(json);
+    case 'ghost':
+      return _Ghost.fromJson(json);
+    case 'dark':
+      return _Dark.fromJson(json);
+    case 'dragon':
+      return _Dragon.fromJson(json);
+    case 'steel':
+      return _Steel.fromJson(json);
+    case 'fairy':
+      return _Fairy.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(json, 'runtimeType', 'PokemonTypes',
+          'Invalid union type "${json['runtimeType']}"!');
+  }
+}
+
 /// @nodoc
 mixin _$PokemonTypes {
   @optionalTypeArgs
@@ -150,6 +195,7 @@ mixin _$PokemonTypes {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -185,9 +231,17 @@ class __$$_NormalCopyWithImpl<$Res> extends _$PokemonTypesCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_Normal extends _Normal {
-  const _$_Normal() : super._();
+  const _$_Normal({final String? $type})
+      : $type = $type ?? 'normal',
+        super._();
+
+  factory _$_Normal.fromJson(Map<String, dynamic> json) =>
+      _$$_NormalFromJson(json);
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   bool operator ==(dynamic other) {
@@ -195,6 +249,7 @@ class _$_Normal extends _Normal {
         (other.runtimeType == runtimeType && other is _$_Normal);
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -355,11 +410,20 @@ class _$_Normal extends _Normal {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_NormalToJson(
+      this,
+    );
+  }
 }
 
 abstract class _Normal extends PokemonTypes {
   const factory _Normal() = _$_Normal;
   const _Normal._() : super._();
+
+  factory _Normal.fromJson(Map<String, dynamic> json) = _$_Normal.fromJson;
 }
 
 /// @nodoc
@@ -379,9 +443,16 @@ class __$$_FireCopyWithImpl<$Res> extends _$PokemonTypesCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_Fire extends _Fire {
-  const _$_Fire() : super._();
+  const _$_Fire({final String? $type})
+      : $type = $type ?? 'fire',
+        super._();
+
+  factory _$_Fire.fromJson(Map<String, dynamic> json) => _$$_FireFromJson(json);
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   bool operator ==(dynamic other) {
@@ -389,6 +460,7 @@ class _$_Fire extends _Fire {
         (other.runtimeType == runtimeType && other is _$_Fire);
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -549,11 +621,20 @@ class _$_Fire extends _Fire {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_FireToJson(
+      this,
+    );
+  }
 }
 
 abstract class _Fire extends PokemonTypes {
   const factory _Fire() = _$_Fire;
   const _Fire._() : super._();
+
+  factory _Fire.fromJson(Map<String, dynamic> json) = _$_Fire.fromJson;
 }
 
 /// @nodoc
@@ -573,9 +654,17 @@ class __$$_WaterCopyWithImpl<$Res> extends _$PokemonTypesCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_Water extends _Water {
-  const _$_Water() : super._();
+  const _$_Water({final String? $type})
+      : $type = $type ?? 'water',
+        super._();
+
+  factory _$_Water.fromJson(Map<String, dynamic> json) =>
+      _$$_WaterFromJson(json);
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   bool operator ==(dynamic other) {
@@ -583,6 +672,7 @@ class _$_Water extends _Water {
         (other.runtimeType == runtimeType && other is _$_Water);
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -743,11 +833,20 @@ class _$_Water extends _Water {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_WaterToJson(
+      this,
+    );
+  }
 }
 
 abstract class _Water extends PokemonTypes {
   const factory _Water() = _$_Water;
   const _Water._() : super._();
+
+  factory _Water.fromJson(Map<String, dynamic> json) = _$_Water.fromJson;
 }
 
 /// @nodoc
@@ -767,9 +866,17 @@ class __$$_GrassCopyWithImpl<$Res> extends _$PokemonTypesCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_Grass extends _Grass {
-  const _$_Grass() : super._();
+  const _$_Grass({final String? $type})
+      : $type = $type ?? 'grass',
+        super._();
+
+  factory _$_Grass.fromJson(Map<String, dynamic> json) =>
+      _$$_GrassFromJson(json);
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   bool operator ==(dynamic other) {
@@ -777,6 +884,7 @@ class _$_Grass extends _Grass {
         (other.runtimeType == runtimeType && other is _$_Grass);
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -937,11 +1045,20 @@ class _$_Grass extends _Grass {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_GrassToJson(
+      this,
+    );
+  }
 }
 
 abstract class _Grass extends PokemonTypes {
   const factory _Grass() = _$_Grass;
   const _Grass._() : super._();
+
+  factory _Grass.fromJson(Map<String, dynamic> json) = _$_Grass.fromJson;
 }
 
 /// @nodoc
@@ -963,9 +1080,17 @@ class __$$_ElectricCopyWithImpl<$Res> extends _$PokemonTypesCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_Electric extends _Electric {
-  const _$_Electric() : super._();
+  const _$_Electric({final String? $type})
+      : $type = $type ?? 'electric',
+        super._();
+
+  factory _$_Electric.fromJson(Map<String, dynamic> json) =>
+      _$$_ElectricFromJson(json);
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   bool operator ==(dynamic other) {
@@ -973,6 +1098,7 @@ class _$_Electric extends _Electric {
         (other.runtimeType == runtimeType && other is _$_Electric);
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -1133,11 +1259,20 @@ class _$_Electric extends _Electric {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_ElectricToJson(
+      this,
+    );
+  }
 }
 
 abstract class _Electric extends PokemonTypes {
   const factory _Electric() = _$_Electric;
   const _Electric._() : super._();
+
+  factory _Electric.fromJson(Map<String, dynamic> json) = _$_Electric.fromJson;
 }
 
 /// @nodoc
@@ -1157,9 +1292,16 @@ class __$$_IceCopyWithImpl<$Res> extends _$PokemonTypesCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_Ice extends _Ice {
-  const _$_Ice() : super._();
+  const _$_Ice({final String? $type})
+      : $type = $type ?? 'ice',
+        super._();
+
+  factory _$_Ice.fromJson(Map<String, dynamic> json) => _$$_IceFromJson(json);
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   bool operator ==(dynamic other) {
@@ -1167,6 +1309,7 @@ class _$_Ice extends _Ice {
         (other.runtimeType == runtimeType && other is _$_Ice);
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -1327,11 +1470,20 @@ class _$_Ice extends _Ice {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_IceToJson(
+      this,
+    );
+  }
 }
 
 abstract class _Ice extends PokemonTypes {
   const factory _Ice() = _$_Ice;
   const _Ice._() : super._();
+
+  factory _Ice.fromJson(Map<String, dynamic> json) = _$_Ice.fromJson;
 }
 
 /// @nodoc
@@ -1353,9 +1505,17 @@ class __$$_FightingCopyWithImpl<$Res> extends _$PokemonTypesCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_Fighting extends _Fighting {
-  const _$_Fighting() : super._();
+  const _$_Fighting({final String? $type})
+      : $type = $type ?? 'fighting',
+        super._();
+
+  factory _$_Fighting.fromJson(Map<String, dynamic> json) =>
+      _$$_FightingFromJson(json);
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   bool operator ==(dynamic other) {
@@ -1363,6 +1523,7 @@ class _$_Fighting extends _Fighting {
         (other.runtimeType == runtimeType && other is _$_Fighting);
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -1523,11 +1684,20 @@ class _$_Fighting extends _Fighting {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_FightingToJson(
+      this,
+    );
+  }
 }
 
 abstract class _Fighting extends PokemonTypes {
   const factory _Fighting() = _$_Fighting;
   const _Fighting._() : super._();
+
+  factory _Fighting.fromJson(Map<String, dynamic> json) = _$_Fighting.fromJson;
 }
 
 /// @nodoc
@@ -1547,9 +1717,17 @@ class __$$_PoisonCopyWithImpl<$Res> extends _$PokemonTypesCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_Poison extends _Poison {
-  const _$_Poison() : super._();
+  const _$_Poison({final String? $type})
+      : $type = $type ?? 'poison',
+        super._();
+
+  factory _$_Poison.fromJson(Map<String, dynamic> json) =>
+      _$$_PoisonFromJson(json);
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   bool operator ==(dynamic other) {
@@ -1557,6 +1735,7 @@ class _$_Poison extends _Poison {
         (other.runtimeType == runtimeType && other is _$_Poison);
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -1717,11 +1896,20 @@ class _$_Poison extends _Poison {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_PoisonToJson(
+      this,
+    );
+  }
 }
 
 abstract class _Poison extends PokemonTypes {
   const factory _Poison() = _$_Poison;
   const _Poison._() : super._();
+
+  factory _Poison.fromJson(Map<String, dynamic> json) = _$_Poison.fromJson;
 }
 
 /// @nodoc
@@ -1741,9 +1929,17 @@ class __$$_GroundCopyWithImpl<$Res> extends _$PokemonTypesCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_Ground extends _Ground {
-  const _$_Ground() : super._();
+  const _$_Ground({final String? $type})
+      : $type = $type ?? 'ground',
+        super._();
+
+  factory _$_Ground.fromJson(Map<String, dynamic> json) =>
+      _$$_GroundFromJson(json);
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   bool operator ==(dynamic other) {
@@ -1751,6 +1947,7 @@ class _$_Ground extends _Ground {
         (other.runtimeType == runtimeType && other is _$_Ground);
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -1911,11 +2108,20 @@ class _$_Ground extends _Ground {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_GroundToJson(
+      this,
+    );
+  }
 }
 
 abstract class _Ground extends PokemonTypes {
   const factory _Ground() = _$_Ground;
   const _Ground._() : super._();
+
+  factory _Ground.fromJson(Map<String, dynamic> json) = _$_Ground.fromJson;
 }
 
 /// @nodoc
@@ -1935,9 +2141,17 @@ class __$$_FlyingCopyWithImpl<$Res> extends _$PokemonTypesCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_Flying extends _Flying {
-  const _$_Flying() : super._();
+  const _$_Flying({final String? $type})
+      : $type = $type ?? 'flying',
+        super._();
+
+  factory _$_Flying.fromJson(Map<String, dynamic> json) =>
+      _$$_FlyingFromJson(json);
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   bool operator ==(dynamic other) {
@@ -1945,6 +2159,7 @@ class _$_Flying extends _Flying {
         (other.runtimeType == runtimeType && other is _$_Flying);
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -2105,11 +2320,20 @@ class _$_Flying extends _Flying {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_FlyingToJson(
+      this,
+    );
+  }
 }
 
 abstract class _Flying extends PokemonTypes {
   const factory _Flying() = _$_Flying;
   const _Flying._() : super._();
+
+  factory _Flying.fromJson(Map<String, dynamic> json) = _$_Flying.fromJson;
 }
 
 /// @nodoc
@@ -2130,9 +2354,17 @@ class __$$_PsychicCopyWithImpl<$Res> extends _$PokemonTypesCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_Psychic extends _Psychic {
-  const _$_Psychic() : super._();
+  const _$_Psychic({final String? $type})
+      : $type = $type ?? 'psychic',
+        super._();
+
+  factory _$_Psychic.fromJson(Map<String, dynamic> json) =>
+      _$$_PsychicFromJson(json);
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   bool operator ==(dynamic other) {
@@ -2140,6 +2372,7 @@ class _$_Psychic extends _Psychic {
         (other.runtimeType == runtimeType && other is _$_Psychic);
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -2300,11 +2533,20 @@ class _$_Psychic extends _Psychic {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_PsychicToJson(
+      this,
+    );
+  }
 }
 
 abstract class _Psychic extends PokemonTypes {
   const factory _Psychic() = _$_Psychic;
   const _Psychic._() : super._();
+
+  factory _Psychic.fromJson(Map<String, dynamic> json) = _$_Psychic.fromJson;
 }
 
 /// @nodoc
@@ -2324,9 +2566,16 @@ class __$$_BugCopyWithImpl<$Res> extends _$PokemonTypesCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_Bug extends _Bug {
-  const _$_Bug() : super._();
+  const _$_Bug({final String? $type})
+      : $type = $type ?? 'bug',
+        super._();
+
+  factory _$_Bug.fromJson(Map<String, dynamic> json) => _$$_BugFromJson(json);
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   bool operator ==(dynamic other) {
@@ -2334,6 +2583,7 @@ class _$_Bug extends _Bug {
         (other.runtimeType == runtimeType && other is _$_Bug);
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -2494,11 +2744,20 @@ class _$_Bug extends _Bug {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_BugToJson(
+      this,
+    );
+  }
 }
 
 abstract class _Bug extends PokemonTypes {
   const factory _Bug() = _$_Bug;
   const _Bug._() : super._();
+
+  factory _Bug.fromJson(Map<String, dynamic> json) = _$_Bug.fromJson;
 }
 
 /// @nodoc
@@ -2518,9 +2777,16 @@ class __$$_RockCopyWithImpl<$Res> extends _$PokemonTypesCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_Rock extends _Rock {
-  const _$_Rock() : super._();
+  const _$_Rock({final String? $type})
+      : $type = $type ?? 'rock',
+        super._();
+
+  factory _$_Rock.fromJson(Map<String, dynamic> json) => _$$_RockFromJson(json);
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   bool operator ==(dynamic other) {
@@ -2528,6 +2794,7 @@ class _$_Rock extends _Rock {
         (other.runtimeType == runtimeType && other is _$_Rock);
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -2688,11 +2955,20 @@ class _$_Rock extends _Rock {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_RockToJson(
+      this,
+    );
+  }
 }
 
 abstract class _Rock extends PokemonTypes {
   const factory _Rock() = _$_Rock;
   const _Rock._() : super._();
+
+  factory _Rock.fromJson(Map<String, dynamic> json) = _$_Rock.fromJson;
 }
 
 /// @nodoc
@@ -2712,9 +2988,17 @@ class __$$_GhostCopyWithImpl<$Res> extends _$PokemonTypesCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_Ghost extends _Ghost {
-  const _$_Ghost() : super._();
+  const _$_Ghost({final String? $type})
+      : $type = $type ?? 'ghost',
+        super._();
+
+  factory _$_Ghost.fromJson(Map<String, dynamic> json) =>
+      _$$_GhostFromJson(json);
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   bool operator ==(dynamic other) {
@@ -2722,6 +3006,7 @@ class _$_Ghost extends _Ghost {
         (other.runtimeType == runtimeType && other is _$_Ghost);
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -2882,11 +3167,20 @@ class _$_Ghost extends _Ghost {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_GhostToJson(
+      this,
+    );
+  }
 }
 
 abstract class _Ghost extends PokemonTypes {
   const factory _Ghost() = _$_Ghost;
   const _Ghost._() : super._();
+
+  factory _Ghost.fromJson(Map<String, dynamic> json) = _$_Ghost.fromJson;
 }
 
 /// @nodoc
@@ -2906,9 +3200,16 @@ class __$$_DarkCopyWithImpl<$Res> extends _$PokemonTypesCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_Dark extends _Dark {
-  const _$_Dark() : super._();
+  const _$_Dark({final String? $type})
+      : $type = $type ?? 'dark',
+        super._();
+
+  factory _$_Dark.fromJson(Map<String, dynamic> json) => _$$_DarkFromJson(json);
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   bool operator ==(dynamic other) {
@@ -2916,6 +3217,7 @@ class _$_Dark extends _Dark {
         (other.runtimeType == runtimeType && other is _$_Dark);
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -3076,11 +3378,20 @@ class _$_Dark extends _Dark {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_DarkToJson(
+      this,
+    );
+  }
 }
 
 abstract class _Dark extends PokemonTypes {
   const factory _Dark() = _$_Dark;
   const _Dark._() : super._();
+
+  factory _Dark.fromJson(Map<String, dynamic> json) = _$_Dark.fromJson;
 }
 
 /// @nodoc
@@ -3100,9 +3411,17 @@ class __$$_DragonCopyWithImpl<$Res> extends _$PokemonTypesCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_Dragon extends _Dragon {
-  const _$_Dragon() : super._();
+  const _$_Dragon({final String? $type})
+      : $type = $type ?? 'dragon',
+        super._();
+
+  factory _$_Dragon.fromJson(Map<String, dynamic> json) =>
+      _$$_DragonFromJson(json);
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   bool operator ==(dynamic other) {
@@ -3110,6 +3429,7 @@ class _$_Dragon extends _Dragon {
         (other.runtimeType == runtimeType && other is _$_Dragon);
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -3270,11 +3590,20 @@ class _$_Dragon extends _Dragon {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_DragonToJson(
+      this,
+    );
+  }
 }
 
 abstract class _Dragon extends PokemonTypes {
   const factory _Dragon() = _$_Dragon;
   const _Dragon._() : super._();
+
+  factory _Dragon.fromJson(Map<String, dynamic> json) = _$_Dragon.fromJson;
 }
 
 /// @nodoc
@@ -3294,9 +3623,17 @@ class __$$_SteelCopyWithImpl<$Res> extends _$PokemonTypesCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_Steel extends _Steel {
-  const _$_Steel() : super._();
+  const _$_Steel({final String? $type})
+      : $type = $type ?? 'steel',
+        super._();
+
+  factory _$_Steel.fromJson(Map<String, dynamic> json) =>
+      _$$_SteelFromJson(json);
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   bool operator ==(dynamic other) {
@@ -3304,6 +3641,7 @@ class _$_Steel extends _Steel {
         (other.runtimeType == runtimeType && other is _$_Steel);
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -3464,11 +3802,20 @@ class _$_Steel extends _Steel {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_SteelToJson(
+      this,
+    );
+  }
 }
 
 abstract class _Steel extends PokemonTypes {
   const factory _Steel() = _$_Steel;
   const _Steel._() : super._();
+
+  factory _Steel.fromJson(Map<String, dynamic> json) = _$_Steel.fromJson;
 }
 
 /// @nodoc
@@ -3488,9 +3835,17 @@ class __$$_FairyCopyWithImpl<$Res> extends _$PokemonTypesCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_Fairy extends _Fairy {
-  const _$_Fairy() : super._();
+  const _$_Fairy({final String? $type})
+      : $type = $type ?? 'fairy',
+        super._();
+
+  factory _$_Fairy.fromJson(Map<String, dynamic> json) =>
+      _$$_FairyFromJson(json);
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   bool operator ==(dynamic other) {
@@ -3498,6 +3853,7 @@ class _$_Fairy extends _Fairy {
         (other.runtimeType == runtimeType && other is _$_Fairy);
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -3658,9 +4014,18 @@ class _$_Fairy extends _Fairy {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_FairyToJson(
+      this,
+    );
+  }
 }
 
 abstract class _Fairy extends PokemonTypes {
   const factory _Fairy() = _$_Fairy;
   const _Fairy._() : super._();
+
+  factory _Fairy.fromJson(Map<String, dynamic> json) = _$_Fairy.fromJson;
 }

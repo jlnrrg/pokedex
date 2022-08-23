@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:pokedex/domain/entities/pokemon_color.dart';
 import 'package:pokedex/domain/entities/pokemon_stat.dart';
 import 'package:pokedex/domain/entities/pokemon_types.dart';
 import 'package:pokedex/domain/entities/sprites.dart';
@@ -18,7 +19,7 @@ class Pokemon with _$Pokemon {
     @Default(<PokemonTypes>[]) List<PokemonTypes> types,
     required Sprites sprites,
     required List<PokemonStat> stats,
-    Color? color,
+    required PokemonColor color,
   }) = _Pokemon;
 
   const Pokemon._();

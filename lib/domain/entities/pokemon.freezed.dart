@@ -25,7 +25,7 @@ mixin _$Pokemon {
   List<PokemonTypes> get types => throw _privateConstructorUsedError;
   Sprites get sprites => throw _privateConstructorUsedError;
   List<PokemonStat> get stats => throw _privateConstructorUsedError;
-  Color? get color => throw _privateConstructorUsedError;
+  PokemonColor get color => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PokemonCopyWith<Pokemon> get copyWith => throw _privateConstructorUsedError;
@@ -45,9 +45,10 @@ abstract class $PokemonCopyWith<$Res> {
       List<PokemonTypes> types,
       Sprites sprites,
       List<PokemonStat> stats,
-      Color? color});
+      PokemonColor color});
 
   $SpritesCopyWith<$Res> get sprites;
+  $PokemonColorCopyWith<$Res> get color;
 }
 
 /// @nodoc
@@ -111,7 +112,7 @@ class _$PokemonCopyWithImpl<$Res> implements $PokemonCopyWith<$Res> {
       color: color == freezed
           ? _value.color
           : color // ignore: cast_nullable_to_non_nullable
-              as Color?,
+              as PokemonColor,
     ));
   }
 
@@ -119,6 +120,13 @@ class _$PokemonCopyWithImpl<$Res> implements $PokemonCopyWith<$Res> {
   $SpritesCopyWith<$Res> get sprites {
     return $SpritesCopyWith<$Res>(_value.sprites, (value) {
       return _then(_value.copyWith(sprites: value));
+    });
+  }
+
+  @override
+  $PokemonColorCopyWith<$Res> get color {
+    return $PokemonColorCopyWith<$Res>(_value.color, (value) {
+      return _then(_value.copyWith(color: value));
     });
   }
 }
@@ -139,10 +147,12 @@ abstract class _$$_PokemonCopyWith<$Res> implements $PokemonCopyWith<$Res> {
       List<PokemonTypes> types,
       Sprites sprites,
       List<PokemonStat> stats,
-      Color? color});
+      PokemonColor color});
 
   @override
   $SpritesCopyWith<$Res> get sprites;
+  @override
+  $PokemonColorCopyWith<$Res> get color;
 }
 
 /// @nodoc
@@ -207,7 +217,7 @@ class __$$_PokemonCopyWithImpl<$Res> extends _$PokemonCopyWithImpl<$Res>
       color: color == freezed
           ? _value.color
           : color // ignore: cast_nullable_to_non_nullable
-              as Color?,
+              as PokemonColor,
     ));
   }
 }
@@ -225,7 +235,7 @@ class _$_Pokemon extends _Pokemon {
       final List<PokemonTypes> types = const <PokemonTypes>[],
       required this.sprites,
       required final List<PokemonStat> stats,
-      this.color})
+      required this.color})
       : _types = types,
         _stats = stats,
         super._();
@@ -260,7 +270,7 @@ class _$_Pokemon extends _Pokemon {
   }
 
   @override
-  final Color? color;
+  final PokemonColor color;
 
   @override
   String toString() {
@@ -316,7 +326,7 @@ abstract class _Pokemon extends Pokemon {
       final List<PokemonTypes> types,
       required final Sprites sprites,
       required final List<PokemonStat> stats,
-      final Color? color}) = _$_Pokemon;
+      required final PokemonColor color}) = _$_Pokemon;
   const _Pokemon._() : super._();
 
   @override
@@ -338,7 +348,7 @@ abstract class _Pokemon extends Pokemon {
   @override
   List<PokemonStat> get stats;
   @override
-  Color? get color;
+  PokemonColor get color;
   @override
   @JsonKey(ignore: true)
   _$$_PokemonCopyWith<_$_Pokemon> get copyWith =>

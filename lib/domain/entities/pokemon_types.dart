@@ -3,6 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:pokedex/domain/core/hexcolor_extension.dart';
 
 part 'pokemon_types.freezed.dart';
+part 'pokemon_types.g.dart';
 
 @freezed
 class PokemonTypes with _$PokemonTypes {
@@ -26,6 +27,9 @@ class PokemonTypes with _$PokemonTypes {
   const factory PokemonTypes.fairy() = _Fairy;
 
   const PokemonTypes._();
+
+  factory PokemonTypes.fromJson(Map<String, dynamic> json) =>
+      _$PokemonTypesFromJson(json);
 
   // source: https://gist.github.com/apaleslimghost/0d25ec801ca4fc43317bcff298af43c3
   String _toHex() => when(
