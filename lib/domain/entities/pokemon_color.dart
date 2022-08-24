@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'pokemon_color.freezed.dart';
@@ -21,27 +22,16 @@ class PokemonColor with _$PokemonColor {
   factory PokemonColor.fromJson(Map<String, dynamic> json) =>
       _$PokemonColorFromJson(json);
 
-  // source: https://gist.github.com/apaleslimghost/0d25ec801ca4fc43317bcff298af43c3
-  // String _toHex() => when(
-  //       normal: () => '#A8A77A',
-  //       fire: () => '#EE8130',
-  //       water: () => '#6390F0',
-  //       grass: () => '#7AC74C',
-  //       electric: () => '#F7D02C',
-  //       ice: () => '#96D9D6',
-  //       fighting: () => '#C22E28',
-  //       poison: () => '#A33EA1',
-  //       ground: () => '#E2BF65',
-  //       flying: () => '#A98FF3',
-  //       psychic: () => '#F95587',
-  //       bug: () => '#A6B91A',
-  //       rock: () => '#B6A136',
-  //       ghost: () => '#735797',
-  //       dark: () => '#705746',
-  //       dragon: () => '#6F35FC',
-  //       steel: () => '#B7B7CE',
-  //       fairy: () => '#D685AD',
-  //     );
-
-  // Color toColor() => HexColor.fromHex(_toHex());
+  Color toColor() => when(
+        black: () => Colors.black,
+        blue: () => Colors.blueAccent,
+        brown: () => Colors.brown,
+        gray: () => Colors.grey,
+        green: () => Colors.greenAccent,
+        pink: () => Colors.pinkAccent,
+        purple: () => Colors.purpleAccent,
+        red: () => Colors.redAccent,
+        white: () => Colors.white,
+        yellow: () => Colors.yellowAccent,
+      );
 }

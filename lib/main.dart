@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:pokedex/domain/entities/pokemon.dart';
+import 'package:pokedex/domain/entities/pokemon_color.dart';
+import 'package:pokedex/domain/entities/pokemon_types.dart';
+import 'package:pokedex/domain/entities/sprites.dart';
+import 'package:pokedex/view/widgets/pokemon/pokemon_card.dart';
 
 void main() {
   runApp(const MyApp());
@@ -46,14 +51,30 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
+          children: const <Widget>[
+            PokemonCard(
+                pokemon: Pokemon(
+                    id: 1,
+                    name: 'bulbasaur',
+                    height: 5,
+                    weight: 20,
+                    description: 'Dies ist nur ein Test',
+                    sprites: Sprites(
+                      backDefault:
+                          "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/1.png",
+                      backFemale: null,
+                      backShiny:
+                          "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/1.png",
+                      backShinyFemale: null,
+                      frontDefault:
+                          "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
+                      frontFemale: null,
+                      frontShiny:
+                          "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/1.png",
+                      frontShinyFemale: null,
+                    ),
+                    color: PokemonColor.green(),
+                    types: [PokemonTypes.grass(), PokemonTypes.poison()]))
           ],
         ),
       ),
