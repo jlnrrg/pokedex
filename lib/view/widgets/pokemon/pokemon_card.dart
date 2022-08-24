@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pokedex/domain/entities/pokemon.dart';
 import 'package:pokedex/view/core/extensions/string_extension.dart';
 import 'package:pokedex/view/widgets/common/ledge_button.dart';
+import 'package:pokedex/view/widgets/pokemon/pokemon_image.dart';
 import 'package:pokedex/view/widgets/pokemon/sections/description_section.dart';
 import 'package:pokedex/view/widgets/pokemon/sections/numeric_info_section.dart';
 
@@ -22,8 +23,6 @@ class PokemonCard extends StatelessWidget {
       child: ClipPath(
           clipper: ShapeBorderClipper(shape: shape),
           child: Container(
-            width: 300,
-            height: 500,
             decoration: BoxDecoration(
                 gradient: LinearGradient(
               begin: Alignment.topRight,
@@ -32,38 +31,41 @@ class PokemonCard extends StatelessWidget {
                   .map((e) => e.toColor().withOpacity(0.5))
                   .toList(),
             )),
-            child: Stack(children: [
-              Align(
-                alignment: const Alignment(-1, -0.25),
-                child: LedgeButton(
-                    onPressed: () => debugPrint(
-                        'left Button pressed'), // TODO(jr): real callback
-                    elevation: 20,
-                    color: Colors.white,
-                    stickDirection: StickDirection.left,
-                    icon: Icon(
-                      Icons.arrow_back,
-                      color: pokemon.color.toColor(),
-                    )),
-              ),
-              Align(
-                alignment: const Alignment(1, -0.25),
-                child: LedgeButton(
-                    onPressed: () => debugPrint(
-                        'right Button pressed'), // TODO(jr): real callback
-                    elevation: 20,
-                    color: Colors.white,
-                    stickDirection: StickDirection.right,
-                    icon: Icon(
-                      Icons.arrow_forward,
-                      color: pokemon.color.toColor(),
-                    )),
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(8, 8, 8, 16),
-                child: _CardContent(pokemon: pokemon),
-              )
-            ]),
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxHeight: 460, maxWidth: 300),
+              child: Stack(children: [
+                Align(
+                  alignment: const Alignment(-1, -0.25),
+                  child: LedgeButton(
+                      onPressed: () => debugPrint(
+                          'left Button pressed'), // TODO(jr): real callback
+                      elevation: 20,
+                      color: Colors.white,
+                      stickDirection: StickDirection.left,
+                      icon: Icon(
+                        Icons.arrow_back,
+                        color: pokemon.color.toColor(),
+                      )),
+                ),
+                Align(
+                  alignment: const Alignment(1, -0.25),
+                  child: LedgeButton(
+                      onPressed: () => debugPrint(
+                          'right Button pressed'), // TODO(jr): real callback
+                      elevation: 20,
+                      color: Colors.white,
+                      stickDirection: StickDirection.right,
+                      icon: Icon(
+                        Icons.arrow_forward,
+                        color: pokemon.color.toColor(),
+                      )),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(8, 8, 8, 16),
+                  child: _CardContent(pokemon: pokemon),
+                )
+              ]),
+            ),
           )),
     );
   }
@@ -77,37 +79,37 @@ class _CardContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Theme(
-        data: Theme.of(context).copyWith(
-            dividerColor: Colors.white.withOpacity(0.5),
-            iconTheme:
-                Theme.of(context).iconTheme.copyWith(color: Colors.white),
-            textTheme: Theme.of(context)
-                .textTheme
-                .apply(bodyColor: Colors.white, displayColor: Colors.white)),
-        child: DefaultTextStyle(
-          style: const TextStyle(color: Colors.white),
-          child: Column(
-            children: [
-              _CardHeader(
-                name: pokemon.name,
-                number: pokemon.id,
+      data: Theme.of(context).copyWith(
+          dividerColor: Colors.white.withOpacity(0.5),
+          iconTheme: Theme.of(context).iconTheme.copyWith(color: Colors.white),
+          textTheme: Theme.of(context)
+              .textTheme
+              .apply(bodyColor: Colors.white, displayColor: Colors.white)),
+      child: DefaultTextStyle(
+        style: const TextStyle(color: Colors.white),
+        child: Column(
+          children: [
+            _CardHeader(
+              name: pokemon.name,
+              number: pokemon.id,
+            ),
+            PokemonImage(pokemon: pokemon, size: const Size(200, 200)),
+            DescriptionSection(
+              child: Text(
+                pokemon.description,
+                style: const TextStyle(color: Colors.grey, fontSize: 12),
               ),
-              const Spacer(),
-              DescriptionSection(
-                child: Text(
-                  pokemon.description,
-                  style: const TextStyle(color: Colors.grey, fontSize: 12),
-                ),
-              ),
-              const SizedBox(height: 20),
-              NumericInfoSection(
-                types: pokemon.types,
-                height: pokemon.height,
-                weight: pokemon.weight,
-              )
-            ],
-          ),
-        ));
+            ),
+            const SizedBox(height: 20),
+            NumericInfoSection(
+              types: pokemon.types,
+              height: pokemon.height,
+              weight: pokemon.weight,
+            )
+          ],
+        ),
+      ),
+    );
   }
 }
 
