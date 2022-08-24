@@ -50,10 +50,10 @@ void main() {
 
       // Assert
       // expectations set like this, because there is to much much flavor text to compare
-      expect(result.detail, mockPokemonDTO1.detail);
-      expect(result.sprites, mockPokemonDTO1.sprites);
-      expect(result.types, mockPokemonDTO1.types);
-      expect(result.species.copyWith(flavor_text_entries: []),
+      expect(result?.detail, mockPokemonDTO1.detail);
+      expect(result?.sprites, mockPokemonDTO1.sprites);
+      expect(result?.types, mockPokemonDTO1.types);
+      expect(result?.species.copyWith(flavor_text_entries: []),
           mockPokemonDTO1.species.copyWith(flavor_text_entries: []));
     });
   });
