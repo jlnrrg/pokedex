@@ -3,7 +3,7 @@ import 'package:pokedex/domain/entities/pokemon.dart';
 import 'package:pokedex/domain/entities/pokemon_color.dart';
 import 'package:pokedex/domain/entities/pokemon_types.dart';
 import 'package:pokedex/domain/entities/sprites.dart';
-import 'package:pokedex/view/widgets/pokemon/pokemon_card.dart';
+import 'package:pokedex/view/widgets/pokemon/pokemon_tile.dart';
 
 void main() {
   runApp(const MyApp());
@@ -52,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: const <Widget>[
-            PokemonCard(
+            PokemonTile(
                 pokemon: Pokemon(
                     id: 1,
                     name: 'bulbasaur',

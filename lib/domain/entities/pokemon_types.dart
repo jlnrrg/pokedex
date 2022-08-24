@@ -55,7 +55,7 @@ class PokemonTypes with _$PokemonTypes {
 
   Color toColor() => HexColor.fromHex(_toHex());
 
-  String toSvgPath() => 'assets/types/Pokémon_${toString()}_Type_icon.svg';
+  String toSvgPath() => 'assets/types/Pokémon_${toString()}_Type_Icon.svg';
 
   @override
   String toString() => when(
