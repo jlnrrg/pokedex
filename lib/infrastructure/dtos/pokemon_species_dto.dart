@@ -7,8 +7,7 @@ part 'pokemon_species_dto.g.dart';
 @freezed
 class PokemonSpeciesDTO with _$PokemonSpeciesDTO {
   const factory PokemonSpeciesDTO(
-      {required String evolution_chain_url,
-      required int base_happiness,
+      {required int base_happiness,
       required int capture_rate,
       @JsonKey(fromJson: PokemonSpeciesDTO.colorFromJSON, toJson: PokemonSpeciesDTO.colorToJSON)
           required String color,
@@ -20,10 +19,7 @@ class PokemonSpeciesDTO with _$PokemonSpeciesDTO {
   factory PokemonSpeciesDTO.fromJson(Map<String, dynamic> json) =>
       _$PokemonSpeciesDTOFromJson(json);
 
-  static String colorFromJSON(Map<String, dynamic> input) =>
-      input['color']['name'];
+  static String colorFromJSON(Map<String, dynamic> input) => input['name'];
 
-  static Map<String, dynamic> colorToJSON(String input) => {
-        "color": {"name": input}
-      };
+  static Map<String, dynamic> colorToJSON(String input) => {"name": input};
 }

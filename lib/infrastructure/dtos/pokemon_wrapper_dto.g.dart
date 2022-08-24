@@ -8,8 +8,6 @@ part of 'pokemon_wrapper_dto.dart';
 
 _$_PokemonWrapperDTO _$$_PokemonWrapperDTOFromJson(Map<String, dynamic> json) =>
     _$_PokemonWrapperDTO(
-      listentry: PokemonListentryDTO.fromJson(
-          json['listentry'] as Map<String, dynamic>),
       detail: PokemonDetailDTO.fromJson(json['detail'] as Map<String, dynamic>),
       types: (json['types'] as List<dynamic>)
           .map((e) => PokemonTypeDTO.fromJson(e as Map<String, dynamic>))
@@ -23,7 +21,6 @@ _$_PokemonWrapperDTO _$$_PokemonWrapperDTOFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$_PokemonWrapperDTOToJson(
         _$_PokemonWrapperDTO instance) =>
     <String, dynamic>{
-      'listentry': instance.listentry,
       'detail': instance.detail,
       'types': instance.types,
       'sprites': instance.sprites,

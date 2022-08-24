@@ -12,8 +12,8 @@ _$_PokemonDetailDTO _$$_PokemonDetailDTOFromJson(Map<String, dynamic> json) =>
       name: json['name'] as String,
       height: json['height'] as int,
       weight: json['weight'] as int,
-      speciesURL: PokemonDetailDTO.speciesURLFromJSON(
-          json['speciesURL'] as Map<String, dynamic>),
+      speciesUrl: PokemonDetailDTO.speciesURLFromJSON(
+          json['species'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_PokemonDetailDTOToJson(_$_PokemonDetailDTO instance) =>
@@ -22,5 +22,5 @@ Map<String, dynamic> _$$_PokemonDetailDTOToJson(_$_PokemonDetailDTO instance) =>
       'name': instance.name,
       'height': instance.height,
       'weight': instance.weight,
-      'speciesURL': PokemonDetailDTO.speciesURLToJSON(instance.speciesURL),
+      'species': PokemonDetailDTO.speciesURLToJSON(instance.speciesUrl),
     };

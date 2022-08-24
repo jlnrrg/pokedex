@@ -20,7 +20,6 @@ PokemonSpeciesDTO _$PokemonSpeciesDTOFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PokemonSpeciesDTO {
-  String get evolution_chain_url => throw _privateConstructorUsedError;
   int get base_happiness => throw _privateConstructorUsedError;
   int get capture_rate => throw _privateConstructorUsedError;
   @JsonKey(
@@ -42,8 +41,7 @@ abstract class $PokemonSpeciesDTOCopyWith<$Res> {
           PokemonSpeciesDTO value, $Res Function(PokemonSpeciesDTO) then) =
       _$PokemonSpeciesDTOCopyWithImpl<$Res>;
   $Res call(
-      {String evolution_chain_url,
-      int base_happiness,
+      {int base_happiness,
       int capture_rate,
       @JsonKey(fromJson: PokemonSpeciesDTO.colorFromJSON, toJson: PokemonSpeciesDTO.colorToJSON)
           String color,
@@ -61,17 +59,12 @@ class _$PokemonSpeciesDTOCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? evolution_chain_url = freezed,
     Object? base_happiness = freezed,
     Object? capture_rate = freezed,
     Object? color = freezed,
     Object? flavor_text_entries = freezed,
   }) {
     return _then(_value.copyWith(
-      evolution_chain_url: evolution_chain_url == freezed
-          ? _value.evolution_chain_url
-          : evolution_chain_url // ignore: cast_nullable_to_non_nullable
-              as String,
       base_happiness: base_happiness == freezed
           ? _value.base_happiness
           : base_happiness // ignore: cast_nullable_to_non_nullable
@@ -100,8 +93,7 @@ abstract class _$$_PokemonSpeciesDTOCopyWith<$Res>
       __$$_PokemonSpeciesDTOCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String evolution_chain_url,
-      int base_happiness,
+      {int base_happiness,
       int capture_rate,
       @JsonKey(fromJson: PokemonSpeciesDTO.colorFromJSON, toJson: PokemonSpeciesDTO.colorToJSON)
           String color,
@@ -121,17 +113,12 @@ class __$$_PokemonSpeciesDTOCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? evolution_chain_url = freezed,
     Object? base_happiness = freezed,
     Object? capture_rate = freezed,
     Object? color = freezed,
     Object? flavor_text_entries = freezed,
   }) {
     return _then(_$_PokemonSpeciesDTO(
-      evolution_chain_url: evolution_chain_url == freezed
-          ? _value.evolution_chain_url
-          : evolution_chain_url // ignore: cast_nullable_to_non_nullable
-              as String,
       base_happiness: base_happiness == freezed
           ? _value.base_happiness
           : base_happiness // ignore: cast_nullable_to_non_nullable
@@ -156,8 +143,7 @@ class __$$_PokemonSpeciesDTOCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_PokemonSpeciesDTO extends _PokemonSpeciesDTO {
   const _$_PokemonSpeciesDTO(
-      {required this.evolution_chain_url,
-      required this.base_happiness,
+      {required this.base_happiness,
       required this.capture_rate,
       @JsonKey(fromJson: PokemonSpeciesDTO.colorFromJSON, toJson: PokemonSpeciesDTO.colorToJSON)
           required this.color,
@@ -168,8 +154,6 @@ class _$_PokemonSpeciesDTO extends _PokemonSpeciesDTO {
   factory _$_PokemonSpeciesDTO.fromJson(Map<String, dynamic> json) =>
       _$$_PokemonSpeciesDTOFromJson(json);
 
-  @override
-  final String evolution_chain_url;
   @override
   final int base_happiness;
   @override
@@ -188,7 +172,7 @@ class _$_PokemonSpeciesDTO extends _PokemonSpeciesDTO {
 
   @override
   String toString() {
-    return 'PokemonSpeciesDTO(evolution_chain_url: $evolution_chain_url, base_happiness: $base_happiness, capture_rate: $capture_rate, color: $color, flavor_text_entries: $flavor_text_entries)';
+    return 'PokemonSpeciesDTO(base_happiness: $base_happiness, capture_rate: $capture_rate, color: $color, flavor_text_entries: $flavor_text_entries)';
   }
 
   @override
@@ -196,8 +180,6 @@ class _$_PokemonSpeciesDTO extends _PokemonSpeciesDTO {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PokemonSpeciesDTO &&
-            const DeepCollectionEquality()
-                .equals(other.evolution_chain_url, evolution_chain_url) &&
             const DeepCollectionEquality()
                 .equals(other.base_happiness, base_happiness) &&
             const DeepCollectionEquality()
@@ -211,7 +193,6 @@ class _$_PokemonSpeciesDTO extends _PokemonSpeciesDTO {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(evolution_chain_url),
       const DeepCollectionEquality().hash(base_happiness),
       const DeepCollectionEquality().hash(capture_rate),
       const DeepCollectionEquality().hash(color),
@@ -233,8 +214,7 @@ class _$_PokemonSpeciesDTO extends _PokemonSpeciesDTO {
 
 abstract class _PokemonSpeciesDTO extends PokemonSpeciesDTO {
   const factory _PokemonSpeciesDTO(
-      {required final String evolution_chain_url,
-      required final int base_happiness,
+      {required final int base_happiness,
       required final int capture_rate,
       @JsonKey(fromJson: PokemonSpeciesDTO.colorFromJSON, toJson: PokemonSpeciesDTO.colorToJSON)
           required final String color,
@@ -245,8 +225,6 @@ abstract class _PokemonSpeciesDTO extends PokemonSpeciesDTO {
   factory _PokemonSpeciesDTO.fromJson(Map<String, dynamic> json) =
       _$_PokemonSpeciesDTO.fromJson;
 
-  @override
-  String get evolution_chain_url;
   @override
   int get base_happiness;
   @override

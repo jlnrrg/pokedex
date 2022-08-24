@@ -13,7 +13,6 @@ part 'pokemon_wrapper_dto.g.dart';
 @freezed
 class PokemonWrapperDTO with _$PokemonWrapperDTO {
   const factory PokemonWrapperDTO({
-    required PokemonListentryDTO listentry,
     required PokemonDetailDTO detail,
     required List<PokemonTypeDTO> types,
     required PokemonSpritesDTO sprites,
@@ -28,7 +27,7 @@ class PokemonWrapperDTO with _$PokemonWrapperDTO {
   Pokemon toDomain() {
     return Pokemon(
         id: detail.id,
-        name: listentry.name,
+        name: detail.name,
         description: '',
         height: detail.height,
         weight: detail.weight,

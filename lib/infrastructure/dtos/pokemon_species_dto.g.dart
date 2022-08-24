@@ -8,7 +8,6 @@ part of 'pokemon_species_dto.dart';
 
 _$_PokemonSpeciesDTO _$$_PokemonSpeciesDTOFromJson(Map<String, dynamic> json) =>
     _$_PokemonSpeciesDTO(
-      evolution_chain_url: json['evolution_chain_url'] as String,
       base_happiness: json['base_happiness'] as int,
       capture_rate: json['capture_rate'] as int,
       color: PokemonSpeciesDTO.colorFromJSON(
@@ -21,7 +20,6 @@ _$_PokemonSpeciesDTO _$$_PokemonSpeciesDTOFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$_PokemonSpeciesDTOToJson(
         _$_PokemonSpeciesDTO instance) =>
     <String, dynamic>{
-      'evolution_chain_url': instance.evolution_chain_url,
       'base_happiness': instance.base_happiness,
       'capture_rate': instance.capture_rate,
       'color': PokemonSpeciesDTO.colorToJSON(instance.color),

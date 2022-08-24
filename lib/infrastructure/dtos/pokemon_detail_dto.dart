@@ -10,8 +10,8 @@ class PokemonDetailDTO with _$PokemonDetailDTO {
     required String name,
     required int height,
     required int weight,
-    @JsonKey(fromJson: PokemonDetailDTO.speciesURLFromJSON, toJson: PokemonDetailDTO.speciesURLToJSON)
-        required String speciesURL,
+    @JsonKey(name: 'species', fromJson: PokemonDetailDTO.speciesURLFromJSON, toJson: PokemonDetailDTO.speciesURLToJSON)
+        required String speciesUrl,
   }) = _PokemonDetailDTO;
 
   const PokemonDetailDTO._();
@@ -19,10 +19,7 @@ class PokemonDetailDTO with _$PokemonDetailDTO {
   factory PokemonDetailDTO.fromJson(Map<String, dynamic> json) =>
       _$PokemonDetailDTOFromJson(json);
 
-  static String speciesURLFromJSON(Map<String, dynamic> input) =>
-      input['species']['url'];
+  static String speciesURLFromJSON(Map<String, dynamic> input) => input['url'];
 
-  static Map<String, dynamic> speciesURLToJSON(String input) => {
-        "species": {"url": input}
-      };
+  static Map<String, dynamic> speciesURLToJSON(String input) => {"url": input};
 }

@@ -14,23 +14,22 @@ void main() {
     pokemonRepository = PokemonRepository(apiDatasource: mockDatasource);
   });
 
-  group('PokemonRepository.getAllPokemon()', () {
+  group('PokemonRepository.getPokemon()', () {
     test(
-        'Given mockPokemonDTOList, When getAllPokemon(), Then mockPokemonList is returned',
+        'Given mockPokemonWrapperDTO1, When getPokemon(), Then mockPokemon1 is returned',
         () async {
       // Arrange
 
-      when(() => mockDatasource.getAllPokemon())
-          .thenAnswer((_) async => Future.value(mockPokemonDTOList));
+      when(() => mockDatasource.getPokemon('1'))
+          .thenAnswer((_) async => Future.value(mockPokemonDTO1));
 
       // Act
-      final result = await pokemonRepository.getAllPokemon();
+      final result = await pokemonRepository.getPokemon('1');
 
       // Assert
-      expect(result, isNotEmpty);
 
-      verify(() => mockDatasource.getAllPokemon()).called(1);
-      expect(result, mockPokemonList);
+      verify(() => mockDatasource.getPokemon('1')).called(1);
+      expect(result, mockPokemon1);
     });
   });
 }

@@ -13,9 +13,9 @@ class PokemonRepository implements IPokemonRepository {
   }
 
   @override
-  Future<Pokemon?> getPokemon(String identifier) {
-    // TODO: implement getPokemon
-    throw UnimplementedError();
+  Future<Pokemon?> getPokemon(String identifier) async {
+    final apiModel = await apiDatasource.getPokemon(identifier);
+    return apiModel.toDomain();
   }
 
   @override

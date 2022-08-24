@@ -25,9 +25,10 @@ mixin _$PokemonDetailDTO {
   int get height => throw _privateConstructorUsedError;
   int get weight => throw _privateConstructorUsedError;
   @JsonKey(
+      name: 'species',
       fromJson: PokemonDetailDTO.speciesURLFromJSON,
       toJson: PokemonDetailDTO.speciesURLToJSON)
-  String get speciesURL => throw _privateConstructorUsedError;
+  String get speciesUrl => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -45,8 +46,8 @@ abstract class $PokemonDetailDTOCopyWith<$Res> {
       String name,
       int height,
       int weight,
-      @JsonKey(fromJson: PokemonDetailDTO.speciesURLFromJSON, toJson: PokemonDetailDTO.speciesURLToJSON)
-          String speciesURL});
+      @JsonKey(name: 'species', fromJson: PokemonDetailDTO.speciesURLFromJSON, toJson: PokemonDetailDTO.speciesURLToJSON)
+          String speciesUrl});
 }
 
 /// @nodoc
@@ -64,7 +65,7 @@ class _$PokemonDetailDTOCopyWithImpl<$Res>
     Object? name = freezed,
     Object? height = freezed,
     Object? weight = freezed,
-    Object? speciesURL = freezed,
+    Object? speciesUrl = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -83,9 +84,9 @@ class _$PokemonDetailDTOCopyWithImpl<$Res>
           ? _value.weight
           : weight // ignore: cast_nullable_to_non_nullable
               as int,
-      speciesURL: speciesURL == freezed
-          ? _value.speciesURL
-          : speciesURL // ignore: cast_nullable_to_non_nullable
+      speciesUrl: speciesUrl == freezed
+          ? _value.speciesUrl
+          : speciesUrl // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -103,8 +104,8 @@ abstract class _$$_PokemonDetailDTOCopyWith<$Res>
       String name,
       int height,
       int weight,
-      @JsonKey(fromJson: PokemonDetailDTO.speciesURLFromJSON, toJson: PokemonDetailDTO.speciesURLToJSON)
-          String speciesURL});
+      @JsonKey(name: 'species', fromJson: PokemonDetailDTO.speciesURLFromJSON, toJson: PokemonDetailDTO.speciesURLToJSON)
+          String speciesUrl});
 }
 
 /// @nodoc
@@ -124,7 +125,7 @@ class __$$_PokemonDetailDTOCopyWithImpl<$Res>
     Object? name = freezed,
     Object? height = freezed,
     Object? weight = freezed,
-    Object? speciesURL = freezed,
+    Object? speciesUrl = freezed,
   }) {
     return _then(_$_PokemonDetailDTO(
       id: id == freezed
@@ -143,9 +144,9 @@ class __$$_PokemonDetailDTOCopyWithImpl<$Res>
           ? _value.weight
           : weight // ignore: cast_nullable_to_non_nullable
               as int,
-      speciesURL: speciesURL == freezed
-          ? _value.speciesURL
-          : speciesURL // ignore: cast_nullable_to_non_nullable
+      speciesUrl: speciesUrl == freezed
+          ? _value.speciesUrl
+          : speciesUrl // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -159,8 +160,8 @@ class _$_PokemonDetailDTO extends _PokemonDetailDTO {
       required this.name,
       required this.height,
       required this.weight,
-      @JsonKey(fromJson: PokemonDetailDTO.speciesURLFromJSON, toJson: PokemonDetailDTO.speciesURLToJSON)
-          required this.speciesURL})
+      @JsonKey(name: 'species', fromJson: PokemonDetailDTO.speciesURLFromJSON, toJson: PokemonDetailDTO.speciesURLToJSON)
+          required this.speciesUrl})
       : super._();
 
   factory _$_PokemonDetailDTO.fromJson(Map<String, dynamic> json) =>
@@ -176,13 +177,14 @@ class _$_PokemonDetailDTO extends _PokemonDetailDTO {
   final int weight;
   @override
   @JsonKey(
+      name: 'species',
       fromJson: PokemonDetailDTO.speciesURLFromJSON,
       toJson: PokemonDetailDTO.speciesURLToJSON)
-  final String speciesURL;
+  final String speciesUrl;
 
   @override
   String toString() {
-    return 'PokemonDetailDTO(id: $id, name: $name, height: $height, weight: $weight, speciesURL: $speciesURL)';
+    return 'PokemonDetailDTO(id: $id, name: $name, height: $height, weight: $weight, speciesUrl: $speciesUrl)';
   }
 
   @override
@@ -195,7 +197,7 @@ class _$_PokemonDetailDTO extends _PokemonDetailDTO {
             const DeepCollectionEquality().equals(other.height, height) &&
             const DeepCollectionEquality().equals(other.weight, weight) &&
             const DeepCollectionEquality()
-                .equals(other.speciesURL, speciesURL));
+                .equals(other.speciesUrl, speciesUrl));
   }
 
   @JsonKey(ignore: true)
@@ -206,7 +208,7 @@ class _$_PokemonDetailDTO extends _PokemonDetailDTO {
       const DeepCollectionEquality().hash(name),
       const DeepCollectionEquality().hash(height),
       const DeepCollectionEquality().hash(weight),
-      const DeepCollectionEquality().hash(speciesURL));
+      const DeepCollectionEquality().hash(speciesUrl));
 
   @JsonKey(ignore: true)
   @override
@@ -227,8 +229,8 @@ abstract class _PokemonDetailDTO extends PokemonDetailDTO {
       required final String name,
       required final int height,
       required final int weight,
-      @JsonKey(fromJson: PokemonDetailDTO.speciesURLFromJSON, toJson: PokemonDetailDTO.speciesURLToJSON)
-          required final String speciesURL}) = _$_PokemonDetailDTO;
+      @JsonKey(name: 'species', fromJson: PokemonDetailDTO.speciesURLFromJSON, toJson: PokemonDetailDTO.speciesURLToJSON)
+          required final String speciesUrl}) = _$_PokemonDetailDTO;
   const _PokemonDetailDTO._() : super._();
 
   factory _PokemonDetailDTO.fromJson(Map<String, dynamic> json) =
@@ -244,9 +246,10 @@ abstract class _PokemonDetailDTO extends PokemonDetailDTO {
   int get weight;
   @override
   @JsonKey(
+      name: 'species',
       fromJson: PokemonDetailDTO.speciesURLFromJSON,
       toJson: PokemonDetailDTO.speciesURLToJSON)
-  String get speciesURL;
+  String get speciesUrl;
   @override
   @JsonKey(ignore: true)
   _$$_PokemonDetailDTOCopyWith<_$_PokemonDetailDTO> get copyWith =>
