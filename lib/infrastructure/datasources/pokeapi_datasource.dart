@@ -15,8 +15,10 @@ class PokeAPIDatasource implements IDatasource {
   final IHttpService httpService;
 
   @override
-  Future<PokemonWrapperDTO> getPokemonByUrl(String url) async {
+  Future<PokemonWrapperDTO?> getPokemonByUrl(String url) async {
     final jsonDetail = await _callApi(url);
+    if (jsonDetail == null) return null;
+
     final detail = PokemonDetailDTO.fromJson(jsonDetail);
     final sprites = PokemonSpritesDTO.fromJson(jsonDetail['sprites']);
 
@@ -41,8 +43,9 @@ class PokeAPIDatasource implements IDatasource {
     for (final jsonPokeEntry in pokelist) {
       final listentry = PokemonListentryDTO.fromJson(jsonPokeEntry);
       final pokemon = await getPokemonByUrl(listentry.url);
-
-      l.add(pokemon);
+      if (pokemon != null) {
+        l.add(pokemon);
+      }
     }
     return l;
   }
@@ -54,6 +57,6 @@ class PokeAPIDatasource implements IDatasource {
   }
 
   @override
-  Future<PokemonWrapperDTO> getPokemon(String identifier) =>
+  Future<PokemonWrapperDTO?> getPokemon(String identifier) =>
       getPokemonByUrl('pokemon/$identifier');
 }

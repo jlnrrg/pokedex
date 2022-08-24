@@ -18,13 +18,12 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$Pokemon {
   int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  String? get description => throw _privateConstructorUsedError;
-  String? get region => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
   int get height => throw _privateConstructorUsedError;
   int get weight => throw _privateConstructorUsedError;
   List<PokemonTypes> get types => throw _privateConstructorUsedError;
-  Sprites get sprites => throw _privateConstructorUsedError;
-  List<PokemonStat> get stats => throw _privateConstructorUsedError;
+  Sprites get sprites =>
+      throw _privateConstructorUsedError; // required List<PokemonStat> stats,
   PokemonColor get color => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -38,13 +37,11 @@ abstract class $PokemonCopyWith<$Res> {
   $Res call(
       {int id,
       String name,
-      String? description,
-      String? region,
+      String description,
       int height,
       int weight,
       List<PokemonTypes> types,
       Sprites sprites,
-      List<PokemonStat> stats,
       PokemonColor color});
 
   $SpritesCopyWith<$Res> get sprites;
@@ -64,12 +61,10 @@ class _$PokemonCopyWithImpl<$Res> implements $PokemonCopyWith<$Res> {
     Object? id = freezed,
     Object? name = freezed,
     Object? description = freezed,
-    Object? region = freezed,
     Object? height = freezed,
     Object? weight = freezed,
     Object? types = freezed,
     Object? sprites = freezed,
-    Object? stats = freezed,
     Object? color = freezed,
   }) {
     return _then(_value.copyWith(
@@ -84,11 +79,7 @@ class _$PokemonCopyWithImpl<$Res> implements $PokemonCopyWith<$Res> {
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-      region: region == freezed
-          ? _value.region
-          : region // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       height: height == freezed
           ? _value.height
           : height // ignore: cast_nullable_to_non_nullable
@@ -105,10 +96,6 @@ class _$PokemonCopyWithImpl<$Res> implements $PokemonCopyWith<$Res> {
           ? _value.sprites
           : sprites // ignore: cast_nullable_to_non_nullable
               as Sprites,
-      stats: stats == freezed
-          ? _value.stats
-          : stats // ignore: cast_nullable_to_non_nullable
-              as List<PokemonStat>,
       color: color == freezed
           ? _value.color
           : color // ignore: cast_nullable_to_non_nullable
@@ -140,13 +127,11 @@ abstract class _$$_PokemonCopyWith<$Res> implements $PokemonCopyWith<$Res> {
   $Res call(
       {int id,
       String name,
-      String? description,
-      String? region,
+      String description,
       int height,
       int weight,
       List<PokemonTypes> types,
       Sprites sprites,
-      List<PokemonStat> stats,
       PokemonColor color});
 
   @override
@@ -169,12 +154,10 @@ class __$$_PokemonCopyWithImpl<$Res> extends _$PokemonCopyWithImpl<$Res>
     Object? id = freezed,
     Object? name = freezed,
     Object? description = freezed,
-    Object? region = freezed,
     Object? height = freezed,
     Object? weight = freezed,
     Object? types = freezed,
     Object? sprites = freezed,
-    Object? stats = freezed,
     Object? color = freezed,
   }) {
     return _then(_$_Pokemon(
@@ -189,11 +172,7 @@ class __$$_PokemonCopyWithImpl<$Res> extends _$PokemonCopyWithImpl<$Res>
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-      region: region == freezed
-          ? _value.region
-          : region // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       height: height == freezed
           ? _value.height
           : height // ignore: cast_nullable_to_non_nullable
@@ -210,10 +189,6 @@ class __$$_PokemonCopyWithImpl<$Res> extends _$PokemonCopyWithImpl<$Res>
           ? _value.sprites
           : sprites // ignore: cast_nullable_to_non_nullable
               as Sprites,
-      stats: stats == freezed
-          ? _value._stats
-          : stats // ignore: cast_nullable_to_non_nullable
-              as List<PokemonStat>,
       color: color == freezed
           ? _value.color
           : color // ignore: cast_nullable_to_non_nullable
@@ -228,16 +203,13 @@ class _$_Pokemon extends _Pokemon {
   const _$_Pokemon(
       {required this.id,
       required this.name,
-      this.description,
-      this.region,
+      this.description = '',
       required this.height,
       required this.weight,
       final List<PokemonTypes> types = const <PokemonTypes>[],
       required this.sprites,
-      required final List<PokemonStat> stats,
       required this.color})
       : _types = types,
-        _stats = stats,
         super._();
 
   @override
@@ -245,9 +217,8 @@ class _$_Pokemon extends _Pokemon {
   @override
   final String name;
   @override
-  final String? description;
-  @override
-  final String? region;
+  @JsonKey()
+  final String description;
   @override
   final int height;
   @override
@@ -262,19 +233,13 @@ class _$_Pokemon extends _Pokemon {
 
   @override
   final Sprites sprites;
-  final List<PokemonStat> _stats;
-  @override
-  List<PokemonStat> get stats {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_stats);
-  }
-
+// required List<PokemonStat> stats,
   @override
   final PokemonColor color;
 
   @override
   String toString() {
-    return 'Pokemon(id: $id, name: $name, description: $description, region: $region, height: $height, weight: $weight, types: $types, sprites: $sprites, stats: $stats, color: $color)';
+    return 'Pokemon(id: $id, name: $name, description: $description, height: $height, weight: $weight, types: $types, sprites: $sprites, color: $color)';
   }
 
   @override
@@ -286,12 +251,10 @@ class _$_Pokemon extends _Pokemon {
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality()
                 .equals(other.description, description) &&
-            const DeepCollectionEquality().equals(other.region, region) &&
             const DeepCollectionEquality().equals(other.height, height) &&
             const DeepCollectionEquality().equals(other.weight, weight) &&
             const DeepCollectionEquality().equals(other._types, _types) &&
             const DeepCollectionEquality().equals(other.sprites, sprites) &&
-            const DeepCollectionEquality().equals(other._stats, _stats) &&
             const DeepCollectionEquality().equals(other.color, color));
   }
 
@@ -301,12 +264,10 @@ class _$_Pokemon extends _Pokemon {
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(name),
       const DeepCollectionEquality().hash(description),
-      const DeepCollectionEquality().hash(region),
       const DeepCollectionEquality().hash(height),
       const DeepCollectionEquality().hash(weight),
       const DeepCollectionEquality().hash(_types),
       const DeepCollectionEquality().hash(sprites),
-      const DeepCollectionEquality().hash(_stats),
       const DeepCollectionEquality().hash(color));
 
   @JsonKey(ignore: true)
@@ -319,13 +280,11 @@ abstract class _Pokemon extends Pokemon {
   const factory _Pokemon(
       {required final int id,
       required final String name,
-      final String? description,
-      final String? region,
+      final String description,
       required final int height,
       required final int weight,
       final List<PokemonTypes> types,
       required final Sprites sprites,
-      required final List<PokemonStat> stats,
       required final PokemonColor color}) = _$_Pokemon;
   const _Pokemon._() : super._();
 
@@ -334,9 +293,7 @@ abstract class _Pokemon extends Pokemon {
   @override
   String get name;
   @override
-  String? get description;
-  @override
-  String? get region;
+  String get description;
   @override
   int get height;
   @override
@@ -345,9 +302,7 @@ abstract class _Pokemon extends Pokemon {
   List<PokemonTypes> get types;
   @override
   Sprites get sprites;
-  @override
-  List<PokemonStat> get stats;
-  @override
+  @override // required List<PokemonStat> stats,
   PokemonColor get color;
   @override
   @JsonKey(ignore: true)
