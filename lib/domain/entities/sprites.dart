@@ -16,4 +16,10 @@ class Sprites with _$Sprites {
   }) = _Sprites;
 
   const Sprites._();
+
+  String get anyFrontOrEmpty =>
+      frontDefault ?? frontFemale ?? frontShiny ?? frontShinyFemale ?? '';
+
+  String get anyBackOrEmpty =>
+      backDefault ?? backFemale ?? backShiny ?? backShinyFemale ?? '';
 }

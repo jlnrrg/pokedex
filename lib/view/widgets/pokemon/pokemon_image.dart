@@ -30,8 +30,7 @@ class PokemonImage extends StatelessWidget {
           curve: Curves.easeOutQuint,
           padding: padding,
           child: CachedNetworkImage(
-            imageUrl:
-                pokemon.sprites.frontDefault!, // TODO(jr): remove null check
+            imageUrl: pokemon.sprites.anyFrontOrEmpty,
             useOldImageOnUrlChange: true,
             maxWidthDiskCache: _cacheMaxSize.width.toInt(),
             maxHeightDiskCache: _cacheMaxSize.height.toInt(),
