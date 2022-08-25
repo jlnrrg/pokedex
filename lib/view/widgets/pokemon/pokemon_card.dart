@@ -1,7 +1,10 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pokedex/domain/entities/pokemon.dart';
+import 'package:pokedex/view/core/config.dart';
 import 'package:pokedex/view/core/extensions/string_extension.dart';
+import 'package:pokedex/view/router/router.dart';
 import 'package:pokedex/view/widgets/common/ledge_button.dart';
 import 'package:pokedex/view/widgets/pokemon/pokemon_image.dart';
 import 'package:pokedex/view/widgets/pokemon/sections/description_section.dart';
@@ -53,32 +56,36 @@ class PokemonCard extends StatelessWidget {
                   constraints:
                       const BoxConstraints(maxHeight: 460, maxWidth: 300),
                   child: Stack(children: [
-                    Align(
-                      alignment: const Alignment(-1, -0.25),
-                      child: LedgeButton(
-                          onPressed: () => debugPrint(
-                              'left Button pressed'), // TODO(jr): real callback
-                          elevation: 20,
-                          color: Colors.white,
-                          stickDirection: StickDirection.left,
-                          icon: Icon(
-                            Icons.arrow_back,
-                            color: pokemon.color.toColor(),
-                          )),
-                    ),
-                    Align(
-                      alignment: const Alignment(1, -0.25),
-                      child: LedgeButton(
-                          onPressed: () => debugPrint(
-                              'right Button pressed'), // TODO(jr): real callback
-                          elevation: 20,
-                          color: Colors.white,
-                          stickDirection: StickDirection.right,
-                          icon: Icon(
-                            Icons.arrow_forward,
-                            color: pokemon.color.toColor(),
-                          )),
-                    ),
+                    if (pokemon.id > Config.firstPokemonId)
+                      Align(
+                        alignment: const Alignment(-1, -0.25),
+                        child: LedgeButton(
+                            onPressed: () => GoRouter.of(context).replaceNamed(
+                                MyRouter.routeNamePokemon,
+                                params: {'n': (pokemon.id - 1).toString()}),
+                            elevation: 20,
+                            color: Colors.white,
+                            stickDirection: StickDirection.left,
+                            icon: Icon(
+                              Icons.arrow_back,
+                              color: pokemon.color.toColor(),
+                            )),
+                      ),
+                    if (pokemon.id < Config.lastPokemonId)
+                      Align(
+                        alignment: const Alignment(1, -0.25),
+                        child: LedgeButton(
+                            onPressed: () => GoRouter.of(context).replaceNamed(
+                                MyRouter.routeNamePokemon,
+                                params: {'n': (pokemon.id + 1).toString()}),
+                            elevation: 20,
+                            color: Colors.white,
+                            stickDirection: StickDirection.right,
+                            icon: Icon(
+                              Icons.arrow_forward,
+                              color: pokemon.color.toColor(),
+                            )),
+                      ),
                     Padding(
                       padding: const EdgeInsets.fromLTRB(8, 8, 8, 16),
                       child: _CardContent(pokemon: pokemon),

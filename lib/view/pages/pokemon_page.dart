@@ -17,11 +17,24 @@ class PokemonPage extends ConsumerStatefulWidget {
 }
 
 class _PokemonPageState extends ConsumerState<PokemonPage> {
-  late final AutoDisposeFutureProvider<Pokemon?> pokemonP;
+  late AutoDisposeFutureProvider<Pokemon?> pokemonP;
 
   @override
   void initState() {
     pokemonP = pokemonProvider(widget.identifier);
+  }
+
+  @override
+  void didUpdateWidget(covariant PokemonPage oldWidget) {
+    if (oldWidget.identifier != widget.identifier) {
+      pokemonP = pokemonProvider(widget.identifier);
+    }
+    super.didUpdateWidget(oldWidget);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   @override

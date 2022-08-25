@@ -57,7 +57,9 @@ class LedgeButton extends StatelessWidget {
             ),
             child: ClipPath(
               clipper: clipper,
-              child: Container(color: color, child: icon),
+              child: GestureDetector(
+                  onTap: onPressed,
+                  child: Container(color: color, child: icon)),
             )));
   }
 }
