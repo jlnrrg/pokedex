@@ -15,6 +15,24 @@ class PokemonCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(15),
       );
 
+  List<Color> get gradientList {
+    final backgroundColor = pokemon.color.toColor().withOpacity(0.5);
+
+    if (pokemon.types.length >= 2) {
+      return pokemon.types.map((e) => e.toColor().withOpacity(0.5)).toList();
+    } else if (pokemon.types.length == 1) {
+      return [
+        pokemon.types.first.toColor().withOpacity(0.5),
+        backgroundColor,
+      ];
+    } else {
+      return [
+        backgroundColor,
+        backgroundColor,
+      ];
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -25,12 +43,9 @@ class PokemonCard extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
                 gradient: LinearGradient(
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft,
-              colors: pokemon.types
-                  .map((e) => e.toColor().withOpacity(0.5))
-                  .toList(),
-            )),
+                    begin: Alignment.topRight,
+                    end: Alignment.bottomLeft,
+                    colors: gradientList)),
             child: ConstrainedBox(
               constraints: const BoxConstraints(maxHeight: 460, maxWidth: 300),
               child: Stack(children: [

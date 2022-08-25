@@ -18,13 +18,38 @@ class PokemonTile extends StatelessWidget {
         borderRadius: BorderRadius.circular(15),
       );
 
-  double get height => 100;
+  double get height => 110;
+
+  List<Color> get gradientList {
+    final backgroundColor = pokemon.color.toColor().withOpacity(0.5);
+
+    if (pokemon.types.length >= 2) {
+      return pokemon.types.map((e) => e.toColor().withOpacity(0.5)).toList();
+    } else if (pokemon.types.length == 1) {
+      return [
+        pokemon.types.first.toColor().withOpacity(0.5),
+        backgroundColor,
+      ];
+    } else {
+      return [
+        backgroundColor,
+        backgroundColor,
+      ];
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
+    final backgroundColor = pokemon.color.toColor();
+    final textColor = ThemeData.estimateBrightnessForColor(backgroundColor) ==
+            Brightness.light
+        ? Colors.black
+        : Colors.white;
+
     return Card(
+        key: Key('${pokemon.id}TileCard'),
         shape: shape,
-        color: pokemon.color.toColor(),
+        color: backgroundColor,
         child: ClipPath(
             clipper: ShapeBorderClipper(shape: shape),
             child: InkWell(
@@ -33,12 +58,9 @@ class PokemonTile extends StatelessWidget {
               child: Container(
                   decoration: BoxDecoration(
                       gradient: LinearGradient(
-                    begin: Alignment.topRight,
-                    end: Alignment.bottomLeft,
-                    colors: pokemon.types
-                        .map((e) => e.toColor().withOpacity(0.5))
-                        .toList(),
-                  )),
+                          begin: Alignment.topRight,
+                          end: Alignment.bottomLeft,
+                          colors: gradientList)),
                   child: SizedBox(
                     width: double.infinity,
                     height: height,
@@ -47,7 +69,11 @@ class PokemonTile extends StatelessWidget {
                       child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Flexible(child: _LeftArea(pokemon: pokemon)),
+                            Flexible(
+                                child: _LeftArea(
+                              pokemon: pokemon,
+                              textColor: textColor,
+                            )),
                             Flexible(
                               child: PokemonImage(
                                   pokemon: pokemon, size: Size(height, height)),
@@ -60,9 +86,12 @@ class PokemonTile extends StatelessWidget {
 }
 
 class _LeftArea extends StatelessWidget {
-  const _LeftArea({Key? key, required this.pokemon}) : super(key: key);
+  const _LeftArea(
+      {Key? key, required this.pokemon, this.textColor = Colors.white})
+      : super(key: key);
 
   final Pokemon pokemon;
+  final Color textColor;
 
   @override
   Widget build(BuildContext context) {
@@ -71,11 +100,11 @@ class _LeftArea extends StatelessWidget {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Text(
         '#${pokemon.id.toString().padLeft(4, '0')}',
-        style: textTheme.subtitle1?.copyWith(color: Colors.white),
+        style: textTheme.subtitle1?.copyWith(color: textColor),
       ),
       Text(
         pokemon.name.toCapitalized(),
-        style: textTheme.headline6?.copyWith(color: Colors.white),
+        style: textTheme.headline6?.copyWith(color: textColor),
       ),
       const Spacer(),
       PokemonTypesWrap(types: pokemon.types)
