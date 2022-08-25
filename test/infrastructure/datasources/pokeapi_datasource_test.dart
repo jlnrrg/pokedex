@@ -1,6 +1,6 @@
+import 'dart:convert';
 import 'dart:io';
 
-import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:pokedex/domain/core/either_extension.dart';
@@ -28,10 +28,8 @@ void main() {
           .thenAnswer((v) async {
         final file = File('test/utils/data/mocks_pokemon1.json');
         final data = await file.readAsString();
-        return Response(
-            requestOptions: RequestOptions(path: ''),
-            statusCode: 200,
-            data: data);
+        final jsonDetails = jsonDecode(data);
+        return jsonDetails;
       });
 
       when(() => mockHttpService
@@ -39,10 +37,8 @@ void main() {
           .thenAnswer((v) async {
         final file = File('test/utils/data/mocks_pokemon_species1.json');
         final data = await file.readAsString();
-        return Response(
-            requestOptions: RequestOptions(path: ''),
-            statusCode: 200,
-            data: data);
+        final jsonDetails = jsonDecode(data);
+        return jsonDetails;
       });
 
       // Act
