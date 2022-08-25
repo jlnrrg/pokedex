@@ -46,42 +46,45 @@ class PokemonTile extends StatelessWidget {
         ? Colors.black
         : Colors.white;
 
-    return Card(
-        key: Key('${pokemon.id}TileCard'),
-        shape: shape,
-        color: backgroundColor,
-        child: ClipPath(
-            clipper: ShapeBorderClipper(shape: shape),
-            child: InkWell(
-              borderRadius: BorderRadius.circular(15),
-              onTap: onTap,
-              child: Container(
-                  decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                          begin: Alignment.topRight,
-                          end: Alignment.bottomLeft,
-                          colors: gradientList)),
-                  child: SizedBox(
-                    width: double.infinity,
-                    height: height,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Flexible(
-                                child: _LeftArea(
-                              pokemon: pokemon,
-                              textColor: textColor,
-                            )),
-                            Flexible(
-                              child: PokemonImage(
-                                  pokemon: pokemon, size: Size(height, height)),
-                            )
-                          ]),
-                    ),
-                  )),
-            )));
+    return Hero(
+        tag: pokemon.id,
+        child: Card(
+            key: Key('${pokemon.id}TileCard'),
+            shape: shape,
+            color: backgroundColor,
+            child: ClipPath(
+                clipper: ShapeBorderClipper(shape: shape),
+                child: InkWell(
+                  borderRadius: BorderRadius.circular(15),
+                  onTap: onTap,
+                  child: Container(
+                      decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                              begin: Alignment.topRight,
+                              end: Alignment.bottomLeft,
+                              colors: gradientList)),
+                      child: SizedBox(
+                        width: double.infinity,
+                        height: height,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Flexible(
+                                    child: _LeftArea(
+                                  pokemon: pokemon,
+                                  textColor: textColor,
+                                )),
+                                Flexible(
+                                  child: PokemonImage(
+                                      pokemon: pokemon,
+                                      size: Size(height, height)),
+                                )
+                              ]),
+                        ),
+                      )),
+                ))));
   }
 }
 

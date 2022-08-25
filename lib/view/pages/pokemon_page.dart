@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:pokedex/domain/entities/pokemon.dart';
+import 'package:pokedex/view/states/pokemon/pokemon_notifier.dart';
+import 'package:pokedex/view/widgets/pokemon/pokemon_card.dart';
 
-class PokemonPage extends StatelessWidget {
+class PokemonPage extends ConsumerStatefulWidget {
   const PokemonPage({
     Key? key,
     required this.identifier,
@@ -9,9 +13,34 @@ class PokemonPage extends StatelessWidget {
   final String identifier;
 
   @override
+  ConsumerState<PokemonPage> createState() => _PokemonPageState();
+}
+
+class _PokemonPageState extends ConsumerState<PokemonPage> {
+  late final AutoDisposeFutureProvider<Pokemon?> pokemonP;
+
+  @override
+  void initState() {
+    pokemonP = pokemonProvider(widget.identifier);
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(child: Text('PokemonPage')),
+    final pokemonAsync = ref.watch(pokemonP);
+
+    return SafeArea(
+      child: Scaffold(
+          body: Center(
+              child: pokemonAsync.when(
+        loading: () => const CircularProgressIndicator(),
+        error: (error, stackTrace) => Text(error.toString()),
+        data: (data) {
+          if (data != null) {
+            return PokemonCard(pokemon: data);
+          }
+          return const Text('Pokemon could not be found');
+        },
+      ))),
     );
   }
 }

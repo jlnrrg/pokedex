@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:pokedex/domain/entities/pokemon.dart';
 import 'package:pokedex/view/core/extensions/string_extension.dart';
@@ -35,54 +36,57 @@ class PokemonCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      shape: shape,
-      color: pokemon.color.toColor(),
-      child: ClipPath(
-          clipper: ShapeBorderClipper(shape: shape),
-          child: Container(
-            decoration: BoxDecoration(
-                gradient: LinearGradient(
-                    begin: Alignment.topRight,
-                    end: Alignment.bottomLeft,
-                    colors: gradientList)),
-            child: ConstrainedBox(
-              constraints: const BoxConstraints(maxHeight: 460, maxWidth: 300),
-              child: Stack(children: [
-                Align(
-                  alignment: const Alignment(-1, -0.25),
-                  child: LedgeButton(
-                      onPressed: () => debugPrint(
-                          'left Button pressed'), // TODO(jr): real callback
-                      elevation: 20,
-                      color: Colors.white,
-                      stickDirection: StickDirection.left,
-                      icon: Icon(
-                        Icons.arrow_back,
-                        color: pokemon.color.toColor(),
-                      )),
+    return Hero(
+        tag: pokemon.id,
+        child: Card(
+          shape: shape,
+          color: pokemon.color.toColor(),
+          child: ClipPath(
+              clipper: ShapeBorderClipper(shape: shape),
+              child: Container(
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        begin: Alignment.topRight,
+                        end: Alignment.bottomLeft,
+                        colors: gradientList)),
+                child: ConstrainedBox(
+                  constraints:
+                      const BoxConstraints(maxHeight: 460, maxWidth: 300),
+                  child: Stack(children: [
+                    Align(
+                      alignment: const Alignment(-1, -0.25),
+                      child: LedgeButton(
+                          onPressed: () => debugPrint(
+                              'left Button pressed'), // TODO(jr): real callback
+                          elevation: 20,
+                          color: Colors.white,
+                          stickDirection: StickDirection.left,
+                          icon: Icon(
+                            Icons.arrow_back,
+                            color: pokemon.color.toColor(),
+                          )),
+                    ),
+                    Align(
+                      alignment: const Alignment(1, -0.25),
+                      child: LedgeButton(
+                          onPressed: () => debugPrint(
+                              'right Button pressed'), // TODO(jr): real callback
+                          elevation: 20,
+                          color: Colors.white,
+                          stickDirection: StickDirection.right,
+                          icon: Icon(
+                            Icons.arrow_forward,
+                            color: pokemon.color.toColor(),
+                          )),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(8, 8, 8, 16),
+                      child: _CardContent(pokemon: pokemon),
+                    )
+                  ]),
                 ),
-                Align(
-                  alignment: const Alignment(1, -0.25),
-                  child: LedgeButton(
-                      onPressed: () => debugPrint(
-                          'right Button pressed'), // TODO(jr): real callback
-                      elevation: 20,
-                      color: Colors.white,
-                      stickDirection: StickDirection.right,
-                      icon: Icon(
-                        Icons.arrow_forward,
-                        color: pokemon.color.toColor(),
-                      )),
-                ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(8, 8, 8, 16),
-                  child: _CardContent(pokemon: pokemon),
-                )
-              ]),
-            ),
-          )),
-    );
+              )),
+        ));
   }
 }
 
@@ -108,10 +112,13 @@ class _CardContent extends StatelessWidget {
               name: pokemon.name,
               number: pokemon.id,
             ),
-            PokemonImage(pokemon: pokemon, size: const Size(200, 200)),
+            PokemonImage(
+              pokemon: pokemon,
+              size: const Size(200, 200),
+            ),
             DescriptionSection(
-              child: Text(
-                pokemon.description,
+              child: AutoSizeText(
+                pokemon.description.replaceAll('\n', ' '),
                 style: const TextStyle(color: Colors.grey, fontSize: 12),
               ),
             ),

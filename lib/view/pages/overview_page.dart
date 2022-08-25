@@ -5,27 +5,26 @@ import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:pokedex/domain/entities/pokemon.dart';
 import 'package:pokedex/view/router/router.dart';
 import 'package:pokedex/view/states/pokemon/pokemon_loader.dart';
+import 'package:pokedex/view/states/pokemon/pokemon_sink.dart';
 import 'package:pokedex/view/widgets/pokemon/pokemon_tile.dart';
 
 class OverviewPage extends ConsumerStatefulWidget {
   const OverviewPage({Key? key}) : super(key: key);
 
   @override
-  _OverviewPageState createState() => _OverviewPageState();
+  ConsumerState createState() => _OverviewPageState();
 }
 
 class _OverviewPageState extends ConsumerState<OverviewPage> {
   static const _pageSize = 10;
   int pageKey = 0;
 
-  //? the initialScrollOffset does not work here, as the data has to be fetched first to create enough scrolling area
-  final _scrollController = ScrollController();
-
   final PagingController<int, Pokemon> _pagingController =
       PagingController(firstPageKey: 0);
 
   @override
   void initState() {
+    ref.read(pokemonSinkProvider); //? necessary to activate the sink
     _pagingController.addPageRequestListener((pageKey) {
       _fetch();
     });
@@ -34,6 +33,7 @@ class _OverviewPageState extends ConsumerState<OverviewPage> {
   }
 
   void reset() {
+    pageKey = 0;
     _pagingController.refresh();
   }
 
@@ -68,8 +68,7 @@ class _OverviewPageState extends ConsumerState<OverviewPage> {
         child: Scaffold(
             body: RefreshIndicator(
                 onRefresh: () => Future.sync(() => reset()),
-                child:
-                    CustomScrollView(controller: _scrollController, slivers: [
+                child: CustomScrollView(slivers: [
                   SliverPadding(
                     padding: const EdgeInsets.all(8),
                     sliver: PagedSliverList.separated(
