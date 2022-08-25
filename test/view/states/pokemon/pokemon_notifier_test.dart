@@ -22,8 +22,6 @@ void main() {
     expect(
         providerContainer.read(pokemonP), const AsyncValue<Pokemon?>.loading());
 
-    await Future.delayed(const Duration(seconds: 1));
-
     final pokemonData = await providerContainer.read(pokemonP.future);
 
     // Assert
