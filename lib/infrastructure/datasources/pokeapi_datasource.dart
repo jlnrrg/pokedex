@@ -73,12 +73,28 @@ class PokeAPIDatasource implements IDatasource {
     return r;
   }
 
-  Future<Either<ModelFailure, dynamic>> _callApi(String url) async {
+  Future<Either<ModelFailure, dynamic>> _callApiExpectResults(
+      String url) async {
     try {
       final response = await httpService.get(url);
-      final j = json.decode(response.data);
+      final j = json.decode(response['results']);
       if (j == null) return left(const ModelFailure.jsonNull());
       return right(j);
+    } on HttpException catch (e) {
+      return left(ModelFailure.network(e.message ?? ''));
+    } on FormatException catch (e) {
+      return left(ModelFailure.parsing(e.message));
+    } catch (e) {
+      return left(ModelFailure.unexpected(e.toString()));
+    }
+  }
+
+  Future<Either<ModelFailure, Map<String, dynamic>>> _callApi(
+      String url) async {
+    try {
+      final response = await httpService.get(url) as Map<String, dynamic>;
+
+      return right(response);
     } on HttpException catch (e) {
       return left(ModelFailure.network(e.message ?? ''));
     } on FormatException catch (e) {

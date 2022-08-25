@@ -16,9 +16,7 @@ class PokemonLoader extends StateNotifier<AsyncValue<List<Pokemon>>> {
 
   static const int itemsPerPage = 10;
 
-  int page = 0;
-
-  Future<void> fetchedNext(int amount) async {
+  Future<void> fetchedNext(int amount, int page) async {
     state = const AsyncValue.loading();
 
     final result =
@@ -30,9 +28,5 @@ class PokemonLoader extends StateNotifier<AsyncValue<List<Pokemon>>> {
 
   void setValue(List<Pokemon> list) {
     state = AsyncValue.data(list);
-  }
-
-  void reset() {
-    page = 0;
   }
 }
