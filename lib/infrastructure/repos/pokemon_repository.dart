@@ -1,3 +1,5 @@
+import 'package:dartz/dartz.dart';
+import 'package:pokedex/domain/core/model_failure.dart';
 import 'package:pokedex/domain/entities/pokemon.dart';
 import 'package:pokedex/domain/repos/i_pokemon_repository.dart';
 import 'package:pokedex/infrastructure/datasources/i_datasource.dart';
@@ -13,9 +15,10 @@ class PokemonRepository implements IPokemonRepository {
   }
 
   @override
-  Future<Pokemon?> getPokemon(String identifier) async {
+  Future<Either<ModelFailure, Pokemon>> getPokemon(String identifier) async {
     final apiModel = await apiDatasource.getPokemon(identifier);
-    return apiModel?.toDomain();
+    final r = apiModel.map((r) => r.toDomain());
+    return r;
   }
 
   @override

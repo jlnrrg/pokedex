@@ -1,5 +1,7 @@
+import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:pokedex/domain/core/either_extension.dart';
 import 'package:pokedex/infrastructure/repos/pokemon_repository.dart';
 
 import '../../utils/data/mocks_pokemon_dto.dart';
@@ -21,7 +23,7 @@ void main() {
       // Arrange
 
       when(() => mockDatasource.getPokemon('1'))
-          .thenAnswer((_) async => Future.value(mockPokemonDTO1));
+          .thenAnswer((_) async => Future.value(right(mockPokemonDTO1)));
 
       // Act
       final result = await pokemonRepository.getPokemon('1');
@@ -29,7 +31,7 @@ void main() {
       // Assert
 
       verify(() => mockDatasource.getPokemon('1')).called(1);
-      expect(result, mockPokemon1);
+      expect(result.getOrNull(), mockPokemon1);
     });
   });
 }

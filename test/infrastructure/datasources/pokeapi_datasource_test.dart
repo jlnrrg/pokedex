@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:pokedex/domain/core/either_extension.dart';
 import 'package:pokedex/infrastructure/datasources/pokeapi_datasource.dart';
 
 import '../../utils/data/mocks_pokemon_dto.dart';
@@ -50,10 +51,10 @@ void main() {
 
       // Assert
       // expectations set like this, because there is to much much flavor text to compare
-      expect(result?.detail, mockPokemonDTO1.detail);
-      expect(result?.sprites, mockPokemonDTO1.sprites);
-      expect(result?.types, mockPokemonDTO1.types);
-      expect(result?.species.copyWith(flavor_text_entries: []),
+      expect(result.getOrNull()?.detail, mockPokemonDTO1.detail);
+      expect(result.getOrNull()?.sprites, mockPokemonDTO1.sprites);
+      expect(result.getOrNull()?.types, mockPokemonDTO1.types);
+      expect(result.getOrNull()?.species.copyWith(flavor_text_entries: []),
           mockPokemonDTO1.species.copyWith(flavor_text_entries: []));
     });
   });
