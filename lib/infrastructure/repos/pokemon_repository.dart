@@ -9,9 +9,10 @@ class PokemonRepository implements IPokemonRepository {
   final IDatasource apiDatasource;
 
   @override
-  Future<List<Pokemon>> getAllPokemon() async {
-    final apiModels = await apiDatasource.getAllPokemon();
-    return apiModels.map((e) => e.toDomain()).toList();
+  Future<Either<ModelFailure, List<Pokemon>>> getAllPokemon() async {
+    final apiModelsEither = await apiDatasource.getAllPokemon();
+
+    return apiModelsEither.map((r) => r.map((e) => e.toDomain()).toList());
   }
 
   @override
@@ -22,8 +23,11 @@ class PokemonRepository implements IPokemonRepository {
   }
 
   @override
-  Future<List<Pokemon>> getPokemons({required int limit, required int offset}) {
-    // TODO: implement getPokemons
-    throw UnimplementedError();
+  Future<Either<ModelFailure, List<Pokemon>>> getPokemons(
+      {required int limit, required int offset}) async {
+    final apiModelsEither =
+        await apiDatasource.getPokemons(limit: limit, page: offset);
+
+    return apiModelsEither.map((r) => r.map((e) => e.toDomain()).toList());
   }
 }

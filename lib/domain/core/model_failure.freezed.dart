@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ModelFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() network,
+    required TResult Function(String msg) network,
     required TResult Function(String msg) unexpected,
     required TResult Function() insufficientPermission,
     required TResult Function() exeptionWasNull,
@@ -29,7 +29,7 @@ mixin _$ModelFailure {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? network,
+    TResult Function(String msg)? network,
     TResult Function(String msg)? unexpected,
     TResult Function()? insufficientPermission,
     TResult Function()? exeptionWasNull,
@@ -40,7 +40,7 @@ mixin _$ModelFailure {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? network,
+    TResult Function(String msg)? network,
     TResult Function(String msg)? unexpected,
     TResult Function()? insufficientPermission,
     TResult Function()? exeptionWasNull,
@@ -107,6 +107,7 @@ class _$ModelFailureCopyWithImpl<$Res> implements $ModelFailureCopyWith<$Res> {
 abstract class _$$NetworkCopyWith<$Res> {
   factory _$$NetworkCopyWith(_$Network value, $Res Function(_$Network) then) =
       __$$NetworkCopyWithImpl<$Res>;
+  $Res call({String msg});
 }
 
 /// @nodoc
@@ -117,31 +118,54 @@ class __$$NetworkCopyWithImpl<$Res> extends _$ModelFailureCopyWithImpl<$Res>
 
   @override
   _$Network get _value => super._value as _$Network;
+
+  @override
+  $Res call({
+    Object? msg = freezed,
+  }) {
+    return _then(_$Network(
+      msg == freezed
+          ? _value.msg
+          : msg // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$Network extends Network {
-  const _$Network() : super._();
+  const _$Network(this.msg) : super._();
+
+  @override
+  final String msg;
 
   @override
   String toString() {
-    return 'ModelFailure.network()';
+    return 'ModelFailure.network(msg: $msg)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$Network);
+        (other.runtimeType == runtimeType &&
+            other is _$Network &&
+            const DeepCollectionEquality().equals(other.msg, msg));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(msg));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$NetworkCopyWith<_$Network> get copyWith =>
+      __$$NetworkCopyWithImpl<_$Network>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() network,
+    required TResult Function(String msg) network,
     required TResult Function(String msg) unexpected,
     required TResult Function() insufficientPermission,
     required TResult Function() exeptionWasNull,
@@ -149,13 +173,13 @@ class _$Network extends Network {
     required TResult Function(String msg) parsing,
     required TResult Function() noData,
   }) {
-    return network();
+    return network(msg);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? network,
+    TResult Function(String msg)? network,
     TResult Function(String msg)? unexpected,
     TResult Function()? insufficientPermission,
     TResult Function()? exeptionWasNull,
@@ -163,13 +187,13 @@ class _$Network extends Network {
     TResult Function(String msg)? parsing,
     TResult Function()? noData,
   }) {
-    return network?.call();
+    return network?.call(msg);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? network,
+    TResult Function(String msg)? network,
     TResult Function(String msg)? unexpected,
     TResult Function()? insufficientPermission,
     TResult Function()? exeptionWasNull,
@@ -179,7 +203,7 @@ class _$Network extends Network {
     required TResult orElse(),
   }) {
     if (network != null) {
-      return network();
+      return network(msg);
     }
     return orElse();
   }
@@ -233,8 +257,13 @@ class _$Network extends Network {
 }
 
 abstract class Network extends ModelFailure {
-  const factory Network() = _$Network;
+  const factory Network(final String msg) = _$Network;
   const Network._() : super._();
+
+  String get msg;
+  @JsonKey(ignore: true)
+  _$$NetworkCopyWith<_$Network> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -301,7 +330,7 @@ class _$Unexpected extends Unexpected {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() network,
+    required TResult Function(String msg) network,
     required TResult Function(String msg) unexpected,
     required TResult Function() insufficientPermission,
     required TResult Function() exeptionWasNull,
@@ -315,7 +344,7 @@ class _$Unexpected extends Unexpected {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? network,
+    TResult Function(String msg)? network,
     TResult Function(String msg)? unexpected,
     TResult Function()? insufficientPermission,
     TResult Function()? exeptionWasNull,
@@ -329,7 +358,7 @@ class _$Unexpected extends Unexpected {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? network,
+    TResult Function(String msg)? network,
     TResult Function(String msg)? unexpected,
     TResult Function()? insufficientPermission,
     TResult Function()? exeptionWasNull,
@@ -444,7 +473,7 @@ class _$InsufficientPermission extends InsufficientPermission {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() network,
+    required TResult Function(String msg) network,
     required TResult Function(String msg) unexpected,
     required TResult Function() insufficientPermission,
     required TResult Function() exeptionWasNull,
@@ -458,7 +487,7 @@ class _$InsufficientPermission extends InsufficientPermission {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? network,
+    TResult Function(String msg)? network,
     TResult Function(String msg)? unexpected,
     TResult Function()? insufficientPermission,
     TResult Function()? exeptionWasNull,
@@ -472,7 +501,7 @@ class _$InsufficientPermission extends InsufficientPermission {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? network,
+    TResult Function(String msg)? network,
     TResult Function(String msg)? unexpected,
     TResult Function()? insufficientPermission,
     TResult Function()? exeptionWasNull,
@@ -581,7 +610,7 @@ class _$ExeptionWasNull extends ExeptionWasNull {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() network,
+    required TResult Function(String msg) network,
     required TResult Function(String msg) unexpected,
     required TResult Function() insufficientPermission,
     required TResult Function() exeptionWasNull,
@@ -595,7 +624,7 @@ class _$ExeptionWasNull extends ExeptionWasNull {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? network,
+    TResult Function(String msg)? network,
     TResult Function(String msg)? unexpected,
     TResult Function()? insufficientPermission,
     TResult Function()? exeptionWasNull,
@@ -609,7 +638,7 @@ class _$ExeptionWasNull extends ExeptionWasNull {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? network,
+    TResult Function(String msg)? network,
     TResult Function(String msg)? unexpected,
     TResult Function()? insufficientPermission,
     TResult Function()? exeptionWasNull,
@@ -716,7 +745,7 @@ class _$JsonNull extends JsonNull {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() network,
+    required TResult Function(String msg) network,
     required TResult Function(String msg) unexpected,
     required TResult Function() insufficientPermission,
     required TResult Function() exeptionWasNull,
@@ -730,7 +759,7 @@ class _$JsonNull extends JsonNull {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? network,
+    TResult Function(String msg)? network,
     TResult Function(String msg)? unexpected,
     TResult Function()? insufficientPermission,
     TResult Function()? exeptionWasNull,
@@ -744,7 +773,7 @@ class _$JsonNull extends JsonNull {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? network,
+    TResult Function(String msg)? network,
     TResult Function(String msg)? unexpected,
     TResult Function()? insufficientPermission,
     TResult Function()? exeptionWasNull,
@@ -874,7 +903,7 @@ class _$Parsing extends Parsing {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() network,
+    required TResult Function(String msg) network,
     required TResult Function(String msg) unexpected,
     required TResult Function() insufficientPermission,
     required TResult Function() exeptionWasNull,
@@ -888,7 +917,7 @@ class _$Parsing extends Parsing {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? network,
+    TResult Function(String msg)? network,
     TResult Function(String msg)? unexpected,
     TResult Function()? insufficientPermission,
     TResult Function()? exeptionWasNull,
@@ -902,7 +931,7 @@ class _$Parsing extends Parsing {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? network,
+    TResult Function(String msg)? network,
     TResult Function(String msg)? unexpected,
     TResult Function()? insufficientPermission,
     TResult Function()? exeptionWasNull,
@@ -1013,7 +1042,7 @@ class _$NoData extends NoData {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() network,
+    required TResult Function(String msg) network,
     required TResult Function(String msg) unexpected,
     required TResult Function() insufficientPermission,
     required TResult Function() exeptionWasNull,
@@ -1027,7 +1056,7 @@ class _$NoData extends NoData {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? network,
+    TResult Function(String msg)? network,
     TResult Function(String msg)? unexpected,
     TResult Function()? insufficientPermission,
     TResult Function()? exeptionWasNull,
@@ -1041,7 +1070,7 @@ class _$NoData extends NoData {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? network,
+    TResult Function(String msg)? network,
     TResult Function(String msg)? unexpected,
     TResult Function()? insufficientPermission,
     TResult Function()? exeptionWasNull,
