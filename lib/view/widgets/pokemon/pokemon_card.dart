@@ -61,7 +61,7 @@ class PokemonCard extends StatelessWidget {
                         alignment: const Alignment(-1, -0.25),
                         child: LedgeButton(
                             onPressed: () => GoRouter.of(context).replaceNamed(
-                                MyRouter.routeNamePokemon,
+                                MyRouter.routeNamePokemonLeftTransition,
                                 params: {'n': (pokemon.id - 1).toString()}),
                             elevation: 20,
                             color: Colors.white,
@@ -76,7 +76,7 @@ class PokemonCard extends StatelessWidget {
                         alignment: const Alignment(1, -0.25),
                         child: LedgeButton(
                             onPressed: () => GoRouter.of(context).replaceNamed(
-                                MyRouter.routeNamePokemon,
+                                MyRouter.routeNamePokemonRightTransition,
                                 params: {'n': (pokemon.id + 1).toString()}),
                             elevation: 20,
                             color: Colors.white,
